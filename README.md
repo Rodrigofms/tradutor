@@ -6,4 +6,8 @@ Para usar tem que colocar as siglas en, es, pt, tanto maisculo quanto minusculo,
 
 # Informações:
 
-Deixei disponível o arquivo em .exe caso queira ter o aplicativo funcionando localmente sem precisar baixar o codigo e ter que abrir um IDE toda vez, mas caso não queira baixar o .exe. tambem pode usar o código a vontade para compilar você mesmo.
+Deixei disponível o arquivo em .exe caso queira ter o aplicativo funcionando localmente sem precisar compilar o codig. Tambem pode usar o código a vontade para compilar você mesmo.
+
+## Como compilar:
+
+Abrir o cmd na pasta onde esta baixado o arquivo ```main.py``` e digitar ```pyinstaller --name="Tradutor em Python" --onefile main.py```. E assim você terá o executável dentro da pasta ```dist```
