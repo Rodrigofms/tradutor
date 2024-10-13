@@ -39,7 +39,6 @@ clear()
 
 while textoParaTraduzir == '':
     print("Texto não inserido")
-    print("Texto não inserido")
     textoParaTraduzir = input(
         'Por favor digite o texto que deseja traduzir: ')
     clear()
