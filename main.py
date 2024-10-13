@@ -1,22 +1,19 @@
 import os
 from translate import Translator  # biblioteca do tradutor
 
-opcao1 = 'es'
-opcao2 = 'pt'
-opcao3 = 'en'
+# opcoes validas de idiomas
+opcoes =  ['es','pt','en','it']
 
 # para limpar o console
-
-
 def clear(): return os.system('cls')
 
-
+#codigo
 print('Bem vindo ao tradutor')
 print('Pressione enter pra continuar')
 input()
 clear()
 
-print('Temos suporte para inglês(en), espanhol(es) e português')
+print('Temos suporte para portuguuês, espanhol, inglês e italiano')
 print('Pressione enter pra continuar')
 input()
 clear()
@@ -26,13 +23,12 @@ idiomaInicial = input(
 clear()
 
 while idiomaInicial == '':
-
     print("Idioma não inserido")
     idiomaInicial = input(
         'Por favor digite idioma do texto que quer traduzir: ').lower()
     clear()
 
-while idiomaInicial not in (opcao1, opcao2, opcao3):
+while idiomaInicial not in opcoes:
     print("Idioma não suportado")
     idiomaInicial = input(
         'Por favor digite idioma do texto que quer traduzir: ').lower()
@@ -43,49 +39,49 @@ clear()
 
 while textoParaTraduzir == '':
     print("Texto não inserido")
+    print("Texto não inserido")
     textoParaTraduzir = input(
         'Por favor digite o texto que deseja traduzir: ')
     clear()
 
-selecionarIdioma = input(
+idiomaFinal = input(
     'Por favor selecione o idioma para que deseja traduzir: ').lower()
 
-texto = textoParaTraduzir
 
-while selecionarIdioma == '':
+while idiomaFinal == '':
     print("Idioma não inserido")
-    selecionarIdioma = input(
+    idiomaFinal = input(
         'Por favor selecione o idioma para que deseja traduzir: ').lower()
     clear()
 
-while selecionarIdioma != opcao1 and selecionarIdioma != opcao2 and selecionarIdioma != opcao3:
+while idiomaFinal not in opcoes:
     print("Idioma não suportado")
-    selecionarIdioma = input(
+    idiomaFinal = input(
         'Por favor selecione o idioma para que deseja traduzir: ').lower()
     clear()
 
-idioma = selecionarIdioma
-translator = Translator(to_lang=idioma, from_lang=idiomaInicial)
+traduzido = Translator(from_lang=idiomaInicial, to_lang=idiomaFinal).translate(textoParaTraduzir)
 
-with open('./textotraduzido.txt', 'w') as a:
-    traduzido = translator.translate(texto).capitalize()
+with open('./textotraduzido.txt', 'w') as a: #cria o arquivo e escreve o texto traduzido
     a.write(traduzido)
-    if idioma == 'es':
+    if idiomaFinal == opcoes[0]:
         print('Texto traduzido com sucesso para espanhol')
-    elif idioma == 'pt':
-        print('Texto traduzido com sucesso para portugues')
-    elif idioma == 'en':
-        print('Texto traduzido com sucesso para ingles')
+    elif idiomaFinal == opcoes[1]:
+        print('Texto traduzido com sucesso para português')
+    elif idiomaFinal == opcoes[2]:
+        print('Texto traduzido com sucesso para inglês')
+    else:
+        print('Texto traduzido com sucesso para italiano')
     print('Pressione enter pra vizualizar')
     input()
     clear()
 
-with open('./textotraduzido.txt') as b:
+with open('./textotraduzido.txt') as b: #le o arquivo e mostra o texto traduzido
     textotraduzido = b.read()
     print(textotraduzido)
     print('Pressione enter pra finalizar')
     input()
     clear()
 
-with open('./textotraduzido.txt', 'w') as done:
-    done.close()
+with open('./textotraduzido.txt', 'w') as reset: #limpa o arquivo
+    reset.close()
